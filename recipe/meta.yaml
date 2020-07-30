@@ -44,7 +44,7 @@ requirements:
     - {{ cdt('libxrandr-devel') }}       # [linux]
     - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
     - {{ cdt('libxxf86vm-devel') }}      # [linux]
-    
+
   host:
     - zlib
     - libpng
@@ -89,6 +89,7 @@ test:
     - wxrc --help  # [unix]
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
+    - if not exists %LIBRARY_BIN%\\wxmsw313u_xrc_vc_x64_custom.dll exit 1  # [win]
 
 
 about:
