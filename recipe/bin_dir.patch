@@ -1,0 +1,34 @@
+diff --git a/build/cmake/functions.cmake b/build/cmake/functions.cmake
+index c33dd3946c..0bb54cb3a9 100644
+--- a/build/cmake/functions.cmake
++++ b/build/cmake/functions.cmake
+@@ -80,7 +80,7 @@ function(wx_set_common_target_properties target_name)
+     set_target_properties(${target_name} PROPERTIES
+         LIBRARY_OUTPUT_DIRECTORY "${wxOUTPUT_DIR}${wxPLATFORM_LIB_DIR}"
+         ARCHIVE_OUTPUT_DIRECTORY "${wxOUTPUT_DIR}${wxPLATFORM_LIB_DIR}"
+-        RUNTIME_OUTPUT_DIRECTORY "${wxOUTPUT_DIR}${wxPLATFORM_LIB_DIR}"
++        RUNTIME_OUTPUT_DIRECTORY "${wxOUTPUT_DIR}${wxPLATFORM_BIN_DIR}"
+         )
+ 
+     if(MSVC)
+@@ -346,7 +346,7 @@ macro(wx_add_library name)
+         wx_install(TARGETS ${name}
+             LIBRARY DESTINATION "lib${wxPLATFORM_LIB_DIR}"
+             ARCHIVE DESTINATION "lib${wxPLATFORM_LIB_DIR}"
+-            RUNTIME DESTINATION "lib${wxPLATFORM_LIB_DIR}"
++            RUNTIME DESTINATION "bin${wxPLATFORM_BIN_DIR}"
+             BUNDLE DESTINATION Applications/wxWidgets
+             )
+     endif()
+diff --git a/build/cmake/init.cmake b/build/cmake/init.cmake
+index d013e92a5a..ac6729536e 100644
+--- a/build/cmake/init.cmake
++++ b/build/cmake/init.cmake
+@@ -161,6 +161,7 @@ if(MSVC)
+ else()
+     set(wxPLATFORM_LIB_DIR)
+ endif()
++set(wxPLATFORM_BIN_DIR)
+ 
+ if(wxBUILD_CUSTOM_SETUP_HEADER_PATH)
+     if(NOT EXISTS "${wxBUILD_CUSTOM_SETUP_HEADER_PATH}/wx/setup.h")
