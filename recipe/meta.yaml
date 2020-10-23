@@ -76,7 +76,7 @@ test:
 
 about:
   home: https://www.wxwidgets.org/
-  license: wxWindows
+  license: LicenseRef-wxWindows
   license_family: LGPL
   license_file:
     - docs/licence.txt
