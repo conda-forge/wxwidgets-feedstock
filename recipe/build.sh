@@ -1,3 +1,6 @@
+#!/usr/env/bin bash
+
+set -ex
 echo $target_platform
 
 if [[ "$target_platform" == "osx"* ]]; then
@@ -9,7 +12,7 @@ fi
 ./configure \
   --prefix=${PREFIX} \
   --with-opengl \
-  ${TARGET_PLATFORM_CONFIGURE_FLAGS}
+  ${TARGET_PLATFORM_CONFIGURE_FLAGS} || cat config.log
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
 
