@@ -72,6 +72,8 @@ test:
     - wxrc --help  # [unix]
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
+    - dir %LIBRARY_BIN%  # [win]
+    - dir %LIBRARY_LIB%  # [win]
     - if not exist %LIBRARY_BIN%\\wxmsw{{ version_no_string }}u_xrc_vc_x64_custom.dll exit 1  # [win]
 
 
