@@ -7,6 +7,7 @@ if [[ "$target_platform" == "osx"* ]]; then
       --with-osx_cocoa
 else
   ./configure \
+     --prefix=${PREFIX} \ 
     --with-opengl \
     --with-gtk="3"
 fi 
