@@ -1,17 +1,15 @@
 echo $target_platform
 
 if [[ "$target_platform" == "osx"* ]]; then
-  ./configure \
-      --prefix=${PREFIX} \
-      --with-opengl \
-      --with-osx_cocoa
+  TARGET_PLATFORM_CONFIGURE_FLAGS="--with-osx_cocoa"
 else
-  ./configure \
-     --prefix=${PREFIX} \ 
-    --with-opengl \
-    --with-gtk="3"
-fi 
+  TARGET_PLATFORM_CONFIGURE_FLAGS="--with-gtk=\"3\""
+fi
 
+./configure \
+  --prefix=${PREFIX} \
+  --with-opengl \
+  ${TARGET_PLATFORM_CONFIGURE_FLAGS}
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
 
