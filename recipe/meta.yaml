@@ -1,7 +1,4 @@
-# 3.0.5 doesn't ship with CMake installer
-# And I don't feel like copying files manually from the VS Solution build
-# {% set version = "3.0.5" %}
-{% set version = "3.1.3" %}
+{% set version = "3.1.4" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -10,15 +7,10 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  # 3.0.5
-  # sha256: 8aacd56b462f42fb6e33b4d8f5d40be5abc3d3b41348ea968aa515cc8285d813
-  # 3.1.3
-  sha256: fffc1d34dac54ff7008df327907984b156c50cff5a2f36ee3da6052744ab554a
+  sha256: 3ca3a19a14b407d0cdda507a7930c2e84ae1c8e74f946e0144d2fa7d881f1a94
 
 build:
-  number: 1
-  # OSX Still doesn't work
-  skip: true  # [osx]
+  number: 0
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
@@ -48,10 +40,6 @@ requirements:
     - libpng
     - libtiff
     - expat
-    # hmaarrfk 2020/05/25
-    # Even after we specify that we want to use sys jpeg
-    # conda claims we are still overlinking on windows
-    # not too sure why
     - jpeg
     - libiconv    # [unix]
     - xz          # [unix]
@@ -59,14 +47,8 @@ requirements:
     - pango       # [unix]
     - cairo       # [unix]
     - fontconfig  # [unix]
-    # old version not available for windows
-    # https://github.com/conda-forge/conda-forge-pinning-feedstock/pull/627
     - gdk-pixbuf  # [unix]
-    # gtk3 3.24.18 seems to report it is 3.24.17
-    # https://github.com/conda-forge/gtk3-feedstock/issues/11
-    - gtk3 !=3.24.18  # [unix]
-    # libglu seems necessary for osx too
-    # https://github.com/conda-forge/libglu-feedstock/pull/17
+    - gtk3        # [linux]
     - libglu       # [linux]
     - mesalib      # [unix]
     - xorg-libx11  # [linux]
@@ -78,6 +60,8 @@ requirements:
     - gtk3         # [linux]
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
+  run_constrained:
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   commands:

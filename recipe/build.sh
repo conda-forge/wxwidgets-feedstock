@@ -1,11 +1,16 @@
-# Use Gold linker and -Wl,--as-needed as suggested in
-# https://github.com/conda-forge/staged-recipes/pull/11589#issuecomment-629882668
-# export LDFLAGS="${LDFLAGS:-} -fuse-ld=gold -Wl,--as-needed"
+echo $target_platform
 
-./configure \
-  --prefix=${PREFIX} \
-  --with-gtk="3" \
-  --with-opengl
+if [[ "$target_platform" == "osx"* ]]; then
+  ./configure \
+      --prefix=${PREFIX} \
+      --with-opengl \
+      --with-osx_cocoa
+else
+  ./configure \
+    --with-opengl \
+    --with-gtk="3"
+fi 
+
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
 
