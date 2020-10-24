@@ -3,7 +3,7 @@ About wxwidgets
 
 Home: https://www.wxwidgets.org/
 
-Package license: Other
+Package license: LicenseRef-wxWindows
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wxwidgets-feedstock/blob/master/LICENSE.txt)
 
