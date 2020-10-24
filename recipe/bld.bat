@@ -1,3 +1,5 @@
+echo on
+
 mkdir build_
 if errorlevel 1 exit 1
 cd build_
@@ -19,3 +21,6 @@ ninja install
 if errorlevel 1 exit 1
 
 MOVE /Y %LIBRARY_LIB%\vc_x64_dll\*.dll %LIBRARY_BIN%
+if errorlevel 1 exit 1
+MOVE /Y %LIBRARY_LIB%\vc_x64_dll\*.lib %LIBRARY_BIN%
+if errorlevel 1 exit 1
