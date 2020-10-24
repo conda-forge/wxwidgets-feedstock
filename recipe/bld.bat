@@ -22,5 +22,5 @@ if errorlevel 1 exit 1
 
 MOVE /Y %LIBRARY_LIB%\vc_x64_dll\*.dll %LIBRARY_BIN%
 if errorlevel 1 exit 1
-MOVE /Y %LIBRARY_LIB%\vc_x64_dll\*.lib %LIBRARY_BIN%
+MOVE /Y %LIBRARY_LIB%\vc_x64_dll\*.lib %LIBRARY_LIB%
 if errorlevel 1 exit 1
