@@ -39,13 +39,6 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_target_platformlinux-64</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=10107&branchName=master">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/wxwidgets-feedstock?branchName=master&jobName=linux&configuration=linux_64_target_platformlinux-64" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
               <td>win_64_target_platformwin-64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=10107&branchName=master">
