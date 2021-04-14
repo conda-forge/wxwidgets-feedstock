@@ -1,4 +1,4 @@
-{% set version = "3.1.3" %}
+{% set version = "3.1.5" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 {% set version_no_dot = version | replace(".", "") %}
 
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: fffc1d34dac54ff7008df327907984b156c50cff5a2f36ee3da6052744ab554a
+  sha256: d7b3666de33aa5c10ea41bb9405c40326e1aeb74ee725bb88f90f1d50270a224
 
 build:
-  number: 3
+  number: 0
   # OSX Still doesn't work, see https://github.com/conda-forge/wxwidgets-feedstock/pulls
   skip: true  # [osx]
   run_exports:
