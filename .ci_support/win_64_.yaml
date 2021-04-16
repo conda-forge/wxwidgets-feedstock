@@ -7,16 +7,14 @@ channel_targets:
 cxx_compiler:
 - vs2017
 expat:
-- '2.2'
+- '2'
 jpeg:
 - '9'
 libpng:
 - '1.6'
 libtiff:
-- 4.1.0
+- '4'
 pin_run_as_build:
-  expat:
-    max_pin: x.x
   jpeg:
     max_pin: x
   libpng:
