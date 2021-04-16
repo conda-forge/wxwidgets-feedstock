@@ -11,7 +11,7 @@ source:
   sha256: fffc1d34dac54ff7008df327907984b156c50cff5a2f36ee3da6052744ab554a
 
 build:
-  number: 3
+  number: 4
   # OSX Still doesn't work, see https://github.com/conda-forge/wxwidgets-feedstock/pulls
   skip: true  # [osx]
   run_exports:
