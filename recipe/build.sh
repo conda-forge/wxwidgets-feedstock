@@ -1,4 +1,9 @@
 #!/usr/env/bin bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./src/tiff/config
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./src/expat/expat/conftools
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./src/png
+cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 set -ex
 echo $target_platform
