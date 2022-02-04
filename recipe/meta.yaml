@@ -11,12 +11,14 @@ source:
   sha256: fffc1d34dac54ff7008df327907984b156c50cff5a2f36ee3da6052744ab554a
 
 build:
-  number: 5
+  number: 6
   # OSX Still doesn't work, see https://github.com/conda-forge/wxwidgets-feedstock/pulls
   skip: true  # [osx]
   run_exports:
     # ABI seems to be stable between minor versions
-    - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
+    # - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
+    # But they wanted to change the default name of the DLL in 3.1.4
+    - wxwidgets >={{ version }},<3.1.4
 
 requirements:
   build:
