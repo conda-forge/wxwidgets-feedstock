@@ -1,4 +1,4 @@
-{% set version = "3.1.6" %}
+{% set version = "3.1.7" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 {% set version_no_dot = version | replace(".", "") %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: 6a2339997794eb9964aa4e0985aa2b8614257d63bb5e422f8cd9363f0d376146
+  sha256: 3d666e47d86192f085c84089b850c90db7a73a5d26b684b617298d89dce84f19
 
 build:
   number: 0
