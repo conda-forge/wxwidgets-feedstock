@@ -6,18 +6,35 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* ./src/png
 cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 set -ex
-echo $target_platform
 
 if [[ "$target_platform" == "osx"* ]]; then
-  TARGET_PLATFORM_CONFIGURE_FLAGS="--with-osx_cocoa"
+  extra_flags="--with-osx_cocoa"
+  extra_flags="${extra_flags} --with-macosx-version-min=${MACOSX_DEPLOYMENT_TARGET}"
 else
-  TARGET_PLATFORM_CONFIGURE_FLAGS="--with-gtk=\"3\""
+  extra_flags="--with-gtk=\"3\""
 fi
+
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
+  extra_flags="--build=${BUILD} --host=${HOST}"
+fi
+
+./configure --help
 
 ./configure \
   --prefix=${PREFIX} \
+  --enable-cxx11 \
+  --with-libjpeg \
+  --with-libpng \
+  --with-regex \
+  --with-libtiff \
+  --with-liblzma \
+  --with-zlib \
+  --with-expat \
+  --with-libiconv \
+  --with-libcurl \
   --with-opengl \
-  ${TARGET_PLATFORM_CONFIGURE_FLAGS} || cat config.log
+  --disable-tests \
+  ${extra_flags} || (cat config.log && exit 1)
 
 [[ "$target_platform" == "win-64" ]] && patch_libtool
 

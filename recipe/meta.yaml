@@ -9,17 +9,39 @@ package:
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
   sha256: 356e9b55f1ae3d58ae1fed61478e9b754d46b820913e3bfbc971c50377c1903a
+  patches:
+    # https://github.com/wxWidgets/wxWidgets/pull/22620
+    - 22620-Ensure-that-wxrc-gets-added-to-the-change_install_na.patch
+    # Without this patch, the cross compiled libraries get a host_suffix
+    # which we do not want for conda-forge packages
+    - no_host_suffix_libs.patch
 
 build:
-  number: 0
-  # OSX Still doesn't work, see https://github.com/conda-forge/wxwidgets-feedstock/pulls
-  skip: true  # [osx]
+  number: 1
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
 
 requirements:
   build:
+    # hmaarrfk
+    # I'm not sure why, without this, I get
+    #
+    # compiling .pyc files...
+    #    File "/Users/runner/miniforge3/lib/python3.9/site-packages/conda_build/post.py", line 296, in post_process
+    #      compile_missing_pyc(files, cwd=prefix, python_exe=python_exe,
+    #    File "/Users/runner/miniforge3/lib/python3.9/site-packages/conda_build/post.py", line 272, in compile_missing_pyc
+    #      call(args + group, cwd=cwd)
+    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 349, in call
+    #      with Popen(*popenargs, **kwargs) as p:
+    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 951, in __init__
+    #      self._execute_child(args, executable, preexec_fn, close_fds,
+    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 1821, in _execute_child
+    #      raise child_exception_type(errno_num, err_msg, err_filename)
+    # OSError: [Errno 86] Bad CPU type in executable: '/Users/runner/miniforge3/conda-bld/wxwidgets_1657415279542
+    # https://github.com/conda/conda-build/issues/686
+    # https://github.com/conda/conda-build/pull/1146
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
@@ -49,25 +71,27 @@ requirements:
     # conda claims we are still overlinking on windows
     # not too sure why
     - jpeg
-    - libiconv    # [unix]
-    - xz          # [unix]
-    - glib        # [unix]
-    - pango       # [unix]
-    - cairo       # [unix]
-    - fontconfig  # [unix]
-    - gdk-pixbuf  # [unix]
-    - gtk3        # [unix]
+    - pcre2
+    - xz
+    - libiconv     # [unix]
+    - libcurl      # [unix]
+    - glib         # [linux]
+    - pango        # [linux]
+    - cairo        # [linux]
+    - fontconfig   # [linux]
+    - gdk-pixbuf   # [linux]
+    - gtk3         # [linux]
     - libglu       # [linux]
     - mesalib      # [unix]
+    - gst-plugins-base  # [linux]
+    - gstreamer    # [linux]
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
     - xorg-libxi   # [linux]
   run:
-    - fontconfig
-    - pango
-    - gtk3         # [linux]
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
