@@ -25,7 +25,7 @@ index 86173493ffba..670ed2b9a4b6 100755
      ${HOST_PREFIX}install_name_tool \${changes} -id \${3}/\${i} \${1}/\${i}
  done
 +
-+if [[ -f "\${2}/wxrc-${WX_RELEASE}" ]]; then
++if test -f "\${2}/wxrc-${WX_RELEASE}" ; then
 +    ${HOST_PREFIX}install_name_tool \${changes} \${2}/wxrc-${WX_RELEASE}
 +fi
  EOF
@@ -48,7 +48,7 @@ index 9a52cdee6558..fbded05cce0d 100644
      ${HOST_PREFIX}install_name_tool \${changes} -id \${3}/\${i} \${1}/\${i}
  done
 +
-+if [[ -f "\${2}/wxrc-${WX_RELEASE}" ]]; then
++if test -f "\${2}/wxrc-${WX_RELEASE}" ; then
 +    ${HOST_PREFIX}install_name_tool \${changes} \${2}/wxrc-${WX_RELEASE}
 +fi
  EOF
