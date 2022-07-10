@@ -1,24 +1,42 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '10.12'
+MACOSX_SDK_VERSION:
+- '10.12'
 c_compiler:
-- vs2017
+- clang
+c_compiler_version:
+- '13'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2017
+- clangxx
+cxx_compiler_version:
+- '13'
 expat:
 - '2'
 jpeg:
 - '9'
+libcurl:
+- '7'
+libiconv:
+- '1.16'
 libpng:
 - '1.6'
 libtiff:
 - '4'
+macos_machine:
+- x86_64-apple-darwin13.4.0
 pcre2:
 - '10.37'
 pin_run_as_build:
   jpeg:
     max_pin: x
+  libcurl:
+    max_pin: x
+  libiconv:
+    max_pin: x.x
   libpng:
     max_pin: x.x
   libtiff:
@@ -28,8 +46,11 @@ pin_run_as_build:
   zlib:
     max_pin: x.x
 target_platform:
-- win-64
+- osx-64
 xz:
 - '5.2'
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
 zlib:
 - '1.2'
