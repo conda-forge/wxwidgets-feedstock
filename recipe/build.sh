@@ -5,9 +5,15 @@ set -ex
 mkdir forgebuild
 cd forgebuild
 
+# Always set CMAKE_CROSSCOMPILING=OFF regardless of whether we are
+# cross-compiling or not. The wxWidgets CMake build scripts only use
+# CMAKE_CROSSCOMPILING to add a host suffix to library names, and we don't want
+# that for the sake of having consistent names for a given platform no matter
+# how it is built.
 cmake_config_args=(
     -DBUILD_SHARED_LIBS=ON
     -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_CROSSCOMPILING=OFF
     -DCMAKE_INSTALL_PREFIX=$PREFIX
     -DwxBUILD_CXX_STANDARD=11
     -DwxBUILD_TESTS=OFF
