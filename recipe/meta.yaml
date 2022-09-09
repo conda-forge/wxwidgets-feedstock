@@ -42,12 +42,10 @@ requirements:
     # https://github.com/conda/conda-build/issues/686
     # https://github.com/conda/conda-build/pull/1146
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - cmake        # [win]
-    - ninja        # [win]
-    - make         # [unix]
+    - cmake
+    - ninja
     - pkg-config   # [unix]
 
     # Necessary CDTs
