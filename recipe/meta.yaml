@@ -10,8 +10,6 @@ source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
   sha256: c229976bb413eb88e45cb5dfb68b27890d450149c09b331abd751e7ae0f5fa66
   patches:
-    # https://github.com/wxWidgets/wxWidgets/pull/22620
-    - 22620-Ensure-that-wxrc-gets-added-to-the-change_install_na.patch
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
