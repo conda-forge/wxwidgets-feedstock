@@ -5,7 +5,7 @@ c_compiler:
 c_compiler_version:
 - '10'
 cairo:
-- '1.16'
+- '1'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -23,7 +23,7 @@ docker_image:
 expat:
 - '2'
 fontconfig:
-- '2.13'
+- '2'
 gdk_pixbuf:
 - '2'
 glib:
@@ -31,7 +31,7 @@ glib:
 gst_plugins_base:
 - '1.20'
 gstreamer:
-- '1.20'
+- '1.21'
 jpeg:
 - '9'
 libcurl:
@@ -46,29 +46,10 @@ pango:
 - '1.50'
 pcre2:
 - '10.37'
-pin_run_as_build:
-  cairo:
-    max_pin: x.x
-  fontconfig:
-    max_pin: x
-  jpeg:
-    max_pin: x
-  libcurl:
-    max_pin: x
-  libpng:
-    max_pin: x.x
-  libtiff:
-    max_pin: x
-  pango:
-    max_pin: x.x
-  xz:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 target_platform:
 - linux-aarch64
 xz:
-- '5.2'
+- '5'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

@@ -28,23 +28,10 @@ macos_machine:
 - arm64-apple-darwin20.0.0
 pcre2:
 - '10.37'
-pin_run_as_build:
-  jpeg:
-    max_pin: x
-  libcurl:
-    max_pin: x
-  libpng:
-    max_pin: x.x
-  libtiff:
-    max_pin: x
-  xz:
-    max_pin: x.x
-  zlib:
-    max_pin: x.x
 target_platform:
 - osx-arm64
 xz:
-- '5.2'
+- '5'
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
