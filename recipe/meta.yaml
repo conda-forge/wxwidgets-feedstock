@@ -15,7 +15,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
