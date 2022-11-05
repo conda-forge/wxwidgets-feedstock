@@ -29,7 +29,7 @@ gdk_pixbuf:
 glib:
 - '2'
 gst_plugins_base:
-- '1.20'
+- '1.21'
 gstreamer:
 - '1.21'
 jpeg:
@@ -45,7 +45,7 @@ libtiff:
 pango:
 - '1.50'
 pcre2:
-- '10.37'
+- '10.40'
 target_platform:
 - linux-aarch64
 xz:
