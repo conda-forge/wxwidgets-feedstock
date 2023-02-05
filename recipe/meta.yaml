@@ -81,7 +81,7 @@ requirements:
     - gtk3         # [linux]
     - libglu       # [linux]
     - mesalib      # [unix]
-    - gst-plugins-base  # [linux]
+    - gst-plugins-base {{ gstreamer }}  # [linux]
     - gstreamer    # [linux]
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
