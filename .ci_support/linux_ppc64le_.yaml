@@ -24,10 +24,8 @@ gdk_pixbuf:
 - '2'
 glib:
 - '2'
-gst_plugins_base:
-- '1.21'
 gstreamer:
-- '1.21'
+- '1.22'
 jpeg:
 - '9'
 libcurl:
