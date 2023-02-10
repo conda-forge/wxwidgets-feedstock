@@ -3,10 +3,6 @@ if errorlevel 1 exit 1
 cd build_
 if errorlevel 1 exit 1
 
-:REM The very first version of the library we built had the dlls ending in
-:REM x64_custom. We maintain it here for backward compatibility
-:REM We should remove it in version 3.2 or 4.0
-
 cmake  ^
     -GNinja ^
     -DCMAKE_BUILD_TYPE=Release ^
@@ -18,6 +14,7 @@ cmake  ^
     -DwxUSE_LIBPNG=sys  ^
     -DwxUSE_LIBTIFF=sys ^
     -DwxUSE_LIBLZMA=sys ^
+    -DwxBUILD_VENDOR= ^
     ..
 if errorlevel 1 exit 1
 
