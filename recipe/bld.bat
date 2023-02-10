@@ -18,6 +18,7 @@ cmake  ^
     -DwxUSE_LIBPNG=sys  ^
     -DwxUSE_LIBTIFF=sys ^
     -DwxUSE_LIBLZMA=sys ^
+    -DwxBUILD_VENDOR= ^
     ..
 if errorlevel 1 exit 1
 
