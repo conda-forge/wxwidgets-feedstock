@@ -1,11 +1,11 @@
-About wxwidgets
-===============
+About wxwidgets-feedstock
+=========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wxwidgets-feedstock/blob/main/LICENSE.txt)
 
 Home: https://www.wxwidgets.org/
 
 Package license: LicenseRef-wxWindows
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/wxwidgets-feedstock/blob/main/LICENSE.txt)
 
 Summary: Cross-Platform GUI Library
 

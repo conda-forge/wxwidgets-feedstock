@@ -15,7 +15,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
@@ -65,10 +65,10 @@ requirements:
     - libtiff
     - expat
     # hmaarrfk 2020/05/25
-    # Even after we specify that we want to use sys jpeg
+    # Even after we specify that we want to use sys libjpeg-turbo
     # conda claims we are still overlinking on windows
     # not too sure why
-    - jpeg
+    - libjpeg-turbo
     - pcre2
     - xz
     - libiconv     # [unix]
