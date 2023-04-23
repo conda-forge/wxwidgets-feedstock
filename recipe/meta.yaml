@@ -19,27 +19,11 @@ build:
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
+  skip_compile_pyc:
+    - "*.py"
 
 requirements:
   build:
-    # hmaarrfk
-    # I'm not sure why, without this, I get
-    #
-    # compiling .pyc files...
-    #    File "/Users/runner/miniforge3/lib/python3.9/site-packages/conda_build/post.py", line 296, in post_process
-    #      compile_missing_pyc(files, cwd=prefix, python_exe=python_exe,
-    #    File "/Users/runner/miniforge3/lib/python3.9/site-packages/conda_build/post.py", line 272, in compile_missing_pyc
-    #      call(args + group, cwd=cwd)
-    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 349, in call
-    #      with Popen(*popenargs, **kwargs) as p:
-    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 951, in __init__
-    #      self._execute_child(args, executable, preexec_fn, close_fds,
-    #    File "/Users/runner/miniforge3/lib/python3.9/subprocess.py", line 1821, in _execute_child
-    #      raise child_exception_type(errno_num, err_msg, err_filename)
-    # OSError: [Errno 86] Bad CPU type in executable: '/Users/runner/miniforge3/conda-bld/wxwidgets_1657415279542
-    # https://github.com/conda/conda-build/issues/686
-    # https://github.com/conda/conda-build/pull/1146
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
