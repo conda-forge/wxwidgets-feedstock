@@ -15,7 +15,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 2
+  number: 3
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
@@ -34,14 +34,6 @@ requirements:
 
     # Necessary CDTs
     - {{ cdt('mesa-libgl-devel') }}      # [linux]
-    - {{ cdt('libxcursor-devel') }}      # [linux]
-    - {{ cdt('libxcomposite-devel') }}   # [linux]
-    - {{ cdt('libxtst-devel') }}         # [linux]
-    - {{ cdt('libxdamage-devel') }}      # [linux]
-    - {{ cdt('libxinerama-devel') }}     # [linux]
-    - {{ cdt('libxrandr-devel') }}       # [linux]
-    - {{ cdt('xorg-x11-proto-devel') }}  # [linux]
-    - {{ cdt('libxxf86vm-devel') }}      # [linux]
 
   host:
     - zlib
@@ -70,6 +62,14 @@ requirements:
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
     - xorg-libxi   # [linux]
+    - xorg-libxxf86vm     # [linux]
+    - xorg-libxrandr      # [linux]
+    - xorg-libxinerama    # [linux]
+    - xorg-libxdamage     # [linux]
+    - xorg-libxcomposite  # [linux]
+    - xorg-libxcursor     # [linux]
+    - xorg-libxtst        # [linux]
+    - xorg-xproto         # [linux]
   run:
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
