@@ -212,6 +212,3 @@ Feedstock Maintainers
 * [@hmaarrfk](https://github.com/hmaarrfk/)
 * [@ryanvolz](https://github.com/ryanvolz/)
 
-
-<!-- dummy commit to enable rerendering -->
-
