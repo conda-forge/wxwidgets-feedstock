@@ -70,6 +70,7 @@ requirements:
     - xorg-libxcursor     # [linux]
     - xorg-libxtst        # [linux]
     - xorg-xproto         # [linux]
+    - xorg-xineramaproto  # [linux]
   run:
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
