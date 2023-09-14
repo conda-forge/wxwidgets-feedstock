@@ -35,7 +35,7 @@ libjpeg_turbo:
 libpng:
 - '1.6'
 libtiff:
-- '4.5'
+- '4.6'
 pango:
 - '1.50'
 pcre2:
