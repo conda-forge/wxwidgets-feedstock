@@ -1,4 +1,4 @@
-{% set version = "3.2.3" %}
+{% set version = "3.2.4" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 {% set version_no_dot = version | replace(".", "") %}
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: c170ab67c7e167387162276aea84e055ee58424486404bba692c401730d1a67a
+  sha256: 0640e1ab716db5af2ecb7389dbef6138d7679261fbff730d23845ba838ca133e
   patches:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
