@@ -39,7 +39,7 @@ libtiff:
 pango:
 - '1.50'
 pcre2:
-- '10.40'
+- '10.42'
 target_platform:
 - linux-ppc64le
 xz:
