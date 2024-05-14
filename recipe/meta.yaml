@@ -1,4 +1,4 @@
-{% set version = "3.2.4" %}
+{% set version = "3.2.5" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 {% set version_no_dot = version | replace(".", "") %}
 
@@ -8,14 +8,14 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: 0640e1ab716db5af2ecb7389dbef6138d7679261fbff730d23845ba838ca133e
+  sha256: 0ad86a3ad3e2e519b6a705248fc9226e3a09bbf069c6c692a02acf7c2d1c6b51
   patches:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 3
+  number: 0
   run_exports:
     # ABI seems to be stable between minor versions
     - {{ pin_subpackage('wxwidgets', max_pin='x.x') }}
@@ -26,6 +26,7 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake        # [win]
     - ninja        # [win]
@@ -74,7 +75,6 @@ requirements:
   run:
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
-    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
 
 test:
   commands:
