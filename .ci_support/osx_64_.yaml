@@ -33,7 +33,7 @@ libtiff:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 pcre2:
-- '10.43'
+- '10.44'
 target_platform:
 - osx-64
 xz:
@@ -42,4 +42,4 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 zlib:
-- '1.2'
+- '1'
