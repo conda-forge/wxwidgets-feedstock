@@ -3,9 +3,8 @@ if errorlevel 1 exit 1
 cd build_
 if errorlevel 1 exit 1
 
-cmake  ^
+cmake %CMAKE_ARGS% ^
     -GNinja ^
-    -DCMAKE_BUILD_TYPE=Release ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX% ^
     -DwxUSE_REGEX=sys   ^
     -DwxUSE_ZLIB=sys    ^
