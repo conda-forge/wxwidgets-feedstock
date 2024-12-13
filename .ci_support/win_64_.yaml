@@ -1,3 +1,5 @@
+ace:
+- 8.0.2
 c_compiler:
 - vs2019
 c_stdlib:
@@ -12,15 +14,17 @@ expat:
 - '2'
 libjpeg_turbo:
 - '3'
+liblzma_devel:
+- '5'
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 pcre2:
 - '10.44'
 target_platform:
 - win-64
-xz:
-- '5'
+wxwidgets:
+- '3.2'
 zlib:
 - '1'
