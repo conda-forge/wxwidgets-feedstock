@@ -16,8 +16,10 @@ source:
 build:
   number: 2
   run_exports:
-    # ABI seems to be stable
-    # but let's preemptively guard against breakage
+    # upstreams seems to intend to keep a stable ABI, but we note
+    # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
+    # 3.2.6 broke the ABI, and it is unclear what will be done in
+    # the future, so let's preemptively guard against breakage
     - {{ pin_subpackage('wxwidgets', max_pin='x.x.x') }}
   skip_compile_pyc:
     - "*.py"
