@@ -42,6 +42,8 @@ libpng:
 - '1.6'
 libtiff:
 - '4.7'
+mesalib:
+- '25.0'
 pango:
 - '1'
 pcre2:
@@ -49,7 +51,7 @@ pcre2:
 target_platform:
 - linux-64
 wxwidgets:
-- '3.2'
+- 3.2.6
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
