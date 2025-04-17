@@ -30,7 +30,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - cmake        # [win]
+    - cmake <4     # [win]
     - ninja        # [win]
     - make         # [unix]
     - pkg-config   # [unix]
