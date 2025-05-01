@@ -19,10 +19,10 @@ libpng:
 libtiff:
 - '4.7'
 pcre2:
-- '10.44'
+- '10.45'
 target_platform:
 - win-64
 wxwidgets:
-- 3.2.6
+- 3.2.7
 zlib:
 - '1'
