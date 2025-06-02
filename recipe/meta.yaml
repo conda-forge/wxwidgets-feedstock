@@ -14,7 +14,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     # upstreams seems to intend to keep a stable ABI, but we note
     # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
@@ -36,9 +36,6 @@ requirements:
     - ninja        # [win]
     - make         # [unix]
     - pkg-config   # [unix]
-
-    # Necessary CDTs
-    - {{ cdt('mesa-libgl-devel') }}      # [linux]
 
   host:
     - zlib
@@ -64,6 +61,7 @@ requirements:
     - mesalib      # [unix]
     - gst-plugins-base {{ gstreamer }}  # [linux]
     - gstreamer    # [linux]
+    - libgl-devel  # [linux]
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
     - xorg-libxi   # [linux]
