@@ -210,5 +210,6 @@ Feedstock Maintainers
 =====================
 
 * [@hmaarrfk](https://github.com/hmaarrfk/)
+* [@pauldmccarthy](https://github.com/pauldmccarthy/)
 * [@ryanvolz](https://github.com/ryanvolz/)
 
