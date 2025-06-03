@@ -14,7 +14,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 1
+  number: 2
   run_exports:
     # upstreams seems to intend to keep a stable ABI, but we note
     # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
@@ -37,9 +37,6 @@ requirements:
     - make         # [unix]
     - pkg-config   # [unix]
 
-    # Necessary CDTs
-    - {{ cdt('mesa-libgl-devel') }}      # [linux]
-
   host:
     - zlib
     - libpng
@@ -52,29 +49,31 @@ requirements:
     - libjpeg-turbo
     - pcre2
     - liblzma-devel
-    - libiconv     # [unix]
-    - libcurl      # [unix]
-    - glib         # [linux]
-    - pango        # [linux]
-    - cairo        # [linux]
-    - fontconfig   # [linux]
-    - gdk-pixbuf   # [linux]
-    - gtk3         # [linux]
-    - libglu       # [linux]
-    - mesalib      # [unix]
+    - libiconv                          # [unix]
+    - libcurl                           # [unix]
+    - glib                              # [linux]
+    - pango                             # [linux]
+    - cairo                             # [linux]
+    - fontconfig                        # [linux]
+    - gdk-pixbuf                        # [linux]
+    - gtk3                              # [linux]
+    - libglu                            # [linux]
+    - mesalib                           # [unix]
     - gst-plugins-base {{ gstreamer }}  # [linux]
-    - gstreamer    # [linux]
-    - xorg-libx11  # [linux]
-    - xorg-libsm   # [linux]
-    - xorg-libxi   # [linux]
-    - xorg-libxxf86vm     # [linux]
-    - xorg-libxrandr      # [linux]
-    - xorg-libxinerama    # [linux]
-    - xorg-libxdamage     # [linux]
-    - xorg-libxcomposite  # [linux]
-    - xorg-libxcursor     # [linux]
-    - xorg-libxtst        # [linux]
-    - xorg-xorgproto      # [linux]
+    - gstreamer                         # [linux]
+    - libgl-devel                       # [linux]
+    - libglx-devel                      # [linux]
+    - xorg-libx11                       # [linux]
+    - xorg-libsm                        # [linux]
+    - xorg-libxi                        # [linux]
+    - xorg-libxxf86vm                   # [linux]
+    - xorg-libxrandr                    # [linux]
+    - xorg-libxinerama                  # [linux]
+    - xorg-libxdamage                   # [linux]
+    - xorg-libxcomposite                # [linux]
+    - xorg-libxcursor                   # [linux]
+    - xorg-libxtst                      # [linux]
+    - xorg-xorgproto                    # [linux]
   run:
     - xorg-libx11  # [linux]
     - xorg-libsm   # [linux]
@@ -117,3 +116,4 @@ extra:
   recipe-maintainers:
     - ryanvolz
     - hmaarrfk
+    - pauldmccarthy
