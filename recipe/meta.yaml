@@ -90,7 +90,7 @@ test:
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
     # They keep changing the name of the dll, but I guess that is ok...
-    - if not exist %LIBRARY_BIN%\\wxmsw32u_core_vc_x64.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\wxmsw330u_core_vc_x64.dll exit 1  # [win]
 
 about:
   home: https://www.wxwidgets.org/
