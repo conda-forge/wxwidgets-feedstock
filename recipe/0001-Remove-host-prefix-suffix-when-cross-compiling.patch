@@ -1,23 +1,8 @@
-From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Ryan Volz <ryan.volz@gmail.com>
-Date: Fri, 9 Sep 2022 16:12:06 -0400
-Subject: [PATCH] Remove host prefix/suffix when cross-compiling.
-
-For conda-forge builds, we want the resulting package to be the same
-whether it was cross-compiled or not. This removes the host suffix from
-library files and prefix from the wx-config file, and it adjusts the
-wx-config file so that it looks for the libraries in the right place.
----
- configure    | 4 ++--
- configure.in | 4 ++--
- wx-config.in | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
-
 diff --git a/configure b/configure
-index 86173493ff..dba31b5f27 100755
+index 086c70ec..bee37f59 100755
 --- a/configure
 +++ b/configure
-@@ -3848,8 +3848,8 @@ case $host_os in *\ *) host_os=`echo "$host_os" | sed 's/ /-/g'`;; esac
+@@ -3810,8 +3810,8 @@ case $host_os in *\ *) host_os=`echo "$host_os" | sed 's/ /-/g'`;; esac
  
  
  if test "$cross_compiling" != "no"; then
@@ -28,23 +13,13 @@ index 86173493ff..dba31b5f27 100755
  else
      HOST_PREFIX=
      HOST_SUFFIX=
-diff --git a/configure.in b/configure.in
-index 9a52cdee65..70aea73771 100644
---- a/configure.in
-+++ b/configure.in
-@@ -27,8 +27,8 @@ dnl notice that if --host was given but --build was not, cross_compiling is
- dnl only set to "maybe" and not "yes" and will be either set to "yes" later or
- dnl configure will exit with error in AC_PROG_CC so don't test for = "yes" here
- if test "$cross_compiling" != "no"; then
--    HOST_PREFIX="${host_alias}-"
--    HOST_SUFFIX="-$host_alias"
-+    HOST_PREFIX=
-+    HOST_SUFFIX=
- else
-     HOST_PREFIX=
-     HOST_SUFFIX=
+@@ -45710,4 +45710,3 @@ else
+     echo "no"
+ fi
+ echo ""
+-
 diff --git a/wx-config.in b/wx-config.in
-index e3f7d115bb..3ecb229705 100755
+index dd864605..9f3a16b8 100755
 --- a/wx-config.in
 +++ b/wx-config.in
 @@ -398,7 +398,7 @@ get_mask()
@@ -61,10 +36,7 @@ index e3f7d115bb..3ecb229705 100755
  installed_configs=`cd "$wxconfdir" 2> /dev/null && ls | grep -v "^inplace-"`
  
 -is_cross && target="@host_alias@"
-+is_cross && target=""
++is_cross && target=
  
  # Define a pseudo-hash to contain the specification of this wx-config
  # instance and its associated library.
--- 
-2.35.1
-
