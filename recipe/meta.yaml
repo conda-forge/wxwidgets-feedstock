@@ -1,4 +1,4 @@
-{% set version = "3.2.8.1" %}
+{% set version = "3.3.0" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: ad0cf6c18815dcf1a6a89ad3c3d21a306cd7b5d99a602f77372ef1d92cb7d756
+  sha256: 492f5eb8a58715f2602f31025c3eaa20d71a3ec8e052c7a9d33153966b4badca
   patches:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
@@ -90,7 +90,7 @@ test:
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
     # They keep changing the name of the dll, but I guess that is ok...
-    - if not exist %LIBRARY_BIN%\\wxmsw32u_core_vc_x64.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\wxmsw330u_core_vc_x64.dll exit 1  # [win]
 
 about:
   home: https://www.wxwidgets.org/
