@@ -28,11 +28,9 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    # Check to see if and when the cmake requirements change
-    # https://github.com/wxWidgets/wxWidgets/blob/v3.2.7.1/CMakeLists.txt#L10
-    - cmake <4     # [win]
+    - cmake        # [win]
     - ninja        # [win]
     - make         # [unix]
     - pkg-config   # [unix]
