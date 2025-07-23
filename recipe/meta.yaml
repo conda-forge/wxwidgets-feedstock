@@ -1,4 +1,4 @@
-{% set version = "3.3.0" %}
+{% set version = "3.3.1" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -7,11 +7,15 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: 492f5eb8a58715f2602f31025c3eaa20d71a3ec8e052c7a9d33153966b4badca
+  sha256: f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d
   patches:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
+    # Work-around issue in cmake config - should be
+    # removed in wxwidgets 3.3.2
+    # (https://github.com/wxWidgets/wxWidgets/pull/25655)
+    - 0002-win32-msvc-naming.patch
 
 build:
   number: 0
@@ -28,11 +32,9 @@ requirements:
   build:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - {{ stdlib("c") }}
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
-    # Check to see if and when the cmake requirements change
-    # https://github.com/wxWidgets/wxWidgets/blob/v3.2.7.1/CMakeLists.txt#L10
-    - cmake <4     # [win]
+    - cmake        # [win]
     - ninja        # [win]
     - make         # [unix]
     - pkg-config   # [unix]
@@ -90,7 +92,7 @@ test:
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
     # They keep changing the name of the dll, but I guess that is ok...
-    - if not exist %LIBRARY_BIN%\\wxmsw330u_core_vc_x64.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\wxmsw331u_core_vc_x64.dll exit 1  # [win]
 
 about:
   home: https://www.wxwidgets.org/
