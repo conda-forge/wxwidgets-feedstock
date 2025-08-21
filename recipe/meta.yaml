@@ -18,7 +18,7 @@ source:
     - 0002-win32-msvc-naming.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     # upstreams seems to intend to keep a stable ABI, but we note
     # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
@@ -60,7 +60,6 @@ requirements:
     - gdk-pixbuf                        # [linux]
     - gtk3                              # [linux]
     - libglu                            # [linux]
-    - mesalib                           # [unix]
     - gst-plugins-base {{ gstreamer }}  # [linux]
     - gstreamer                         # [linux]
     - libgl-devel                       # [linux]
