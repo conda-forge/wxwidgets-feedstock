@@ -29,7 +29,7 @@ gdk_pixbuf:
 glib:
 - '2'
 gstreamer:
-- '1.24'
+- '1.26'
 libcurl:
 - '8'
 libiconv:
