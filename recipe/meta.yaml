@@ -1,4 +1,4 @@
-{% set version = "3.3.1" %}
+{% set version = "3.2.8.1" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/wxWidgets/wxWidgets/releases/download/v{{ version }}/wxWidgets-{{ version }}.tar.bz2
-  sha256: f936c8d694f9c49a367a376f99c751467150a4ed7cbf8f4723ef19b2d2d9998d
+  sha256: ad0cf6c18815dcf1a6a89ad3c3d21a306cd7b5d99a602f77372ef1d92cb7d756
   patches:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
@@ -18,7 +18,7 @@ source:
     - 0002-win32-msvc-naming.patch
 
 build:
-  number: 3
+  number: 0
   run_exports:
     # upstreams seems to intend to keep a stable ABI, but we note
     # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
@@ -91,7 +91,7 @@ test:
     - where wxrc   # [win]
     - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
     # They keep changing the name of the dll, but I guess that is ok...
-    - if not exist %LIBRARY_BIN%\\wxmsw331u_core_vc_x64.dll exit 1  # [win]
+    - if not exist %LIBRARY_BIN%\\wxmsw32u_core_vc_x64.dll exit 1  # [win]
 
 about:
   home: https://www.wxwidgets.org/
