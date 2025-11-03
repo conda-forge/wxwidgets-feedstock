@@ -12,10 +12,6 @@ source:
     # Without this patch, the cross compiled libraries get a host_suffix
     # which we do not want for conda-forge packages
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
-    # Work-around issue in cmake config - should be
-    # removed in wxwidgets 3.3.2
-    # (https://github.com/wxWidgets/wxWidgets/pull/25655)
-    - 0002-win32-msvc-naming.patch
 
 build:
   number: 0
