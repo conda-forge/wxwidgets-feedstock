@@ -33,6 +33,7 @@ fi
   --with-libiconv \
   --with-libcurl \
   --with-opengl \
+  --disable-glcanvasegl \
   --disable-tests \
   ${extra_flags} || (cat config.log && exit 1)
 
