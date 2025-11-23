@@ -8,8 +8,6 @@ c_stdlib_version:
 - '2.17'
 cairo:
 - '1'
-cdt_name:
-- conda
 channel_sources:
 - conda-forge
 channel_targets:
@@ -45,7 +43,7 @@ libtiff:
 pango:
 - '1'
 pcre2:
-- '10.46'
+- '10.47'
 target_platform:
 - linux-aarch64
 wxwidgets:
