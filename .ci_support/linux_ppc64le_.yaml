@@ -43,7 +43,7 @@ libtiff:
 pango:
 - '1'
 pcre2:
-- '10.46'
+- '10.47'
 target_platform:
 - linux-ppc64le
 wxwidgets:
