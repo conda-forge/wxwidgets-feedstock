@@ -1,4 +1,4 @@
-{% set version = "3.2.8.1" %}
+{% set version = "3.2.9" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
 
 package:
@@ -14,7 +14,7 @@ source:
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
 build:
-  number: 2
+  number: 9
   run_exports:
     # upstreams seems to intend to keep a stable ABI, but we note
     # https://github.com/wxWidgets/wxWidgets/issues/25173 revealed
