@@ -1,25 +1,21 @@
 --- a/configure	2025-12-07 22:59:42.000000000 +0000
 +++ b/configure	2026-02-10 15:05:36.199061761 +0000
-@@ -34271,17 +34271,16 @@
+@@ -34271,14 +34271,14 @@
              DYLIB_RPATH_POSTLINK="${HOST_PREFIX}install_name_tool -id \$@ \$@"
              cat <<EOF >change-install-names
  #!/bin/sh
 -set -e
--libdir=\$(cd lib ; pwd -P)
 +set -ex
+ libdir=\$(cd lib ; pwd -P)
  libnames=\$(cd lib ; ls -1 libwx*${WX_RELEASE}.dylib)
  changes=''
  for dep in \${libnames} ; do
--    target=\$(readlink \${4}/\${dep})
+     target=\$(readlink \${4}/\${dep})
 -    changes="\${changes} -change \${libdir}\${target} \${3}/\${dep}"
-+    target=\$(readlink -f \${4}/\${dep})
-+    changes="\${changes} -change \${target} \${3}/\${dep}"
++    changes="\${changes} -change \${libdir}/\${target} \${3}/\${dep}"
  done
  for i in \${libnames} ; do
--    lib=\$(readlink \${1}/\${i})
--    ${HOST_PREFIX}install_name_tool \${changes} -id \${3}/\${i} \${libdir}/\${lib}
-+    lib=\$(readlink -f \${1}/\${i})
-+    ${HOST_PREFIX}install_name_tool \${changes} -id \${3}/\${i} \${lib}
+     lib=\$(readlink \${1}/\${i})
  done
 
  if test -f "\${2}/wxrc-${WX_RELEASE}" ; then
