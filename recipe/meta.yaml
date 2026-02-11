@@ -14,7 +14,7 @@ source:
     # which we do not want for conda-forge packages
     - 0001-Remove-host-prefix-suffix-when-cross-compiling.patch
 
-    # Dylib library names/IDs are not correctly on intel macOS -
+    # There's a bug in the way that wxwidgets resolves dylib paths
     # https://github.com/wxWidgets/wxWidgets/commit/30c0f6a675bd586c50820838f0814817b1b5ae92
     # https://github.com/wxWidgets/wxWidgets/issues/25675
     # https://trac.macports.org/ticket/72751#comment:2

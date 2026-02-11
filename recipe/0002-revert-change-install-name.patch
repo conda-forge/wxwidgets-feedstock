@@ -1,21 +1,40 @@
---- a/configure	2025-12-07 22:59:42.000000000 +0000
-+++ b/configure	2026-02-10 15:05:36.199061761 +0000
-@@ -34271,14 +34271,14 @@
+diff --git a/configure b/configure
+index 4460fa86..72e7ec14 100755
+--- a/configure
++++ b/configure
+@@ -34271,21 +34271,24 @@ rm -f core conftest.err conftest.$ac_objext \
              DYLIB_RPATH_POSTLINK="${HOST_PREFIX}install_name_tool -id \$@ \$@"
              cat <<EOF >change-install-names
  #!/bin/sh
 -set -e
+-libdir=\$(cd lib ; pwd -P)
+-libnames=\$(cd lib ; ls -1 libwx*${WX_RELEASE}.dylib)
 +set -ex
- libdir=\$(cd lib ; pwd -P)
- libnames=\$(cd lib ; ls -1 libwx*${WX_RELEASE}.dylib)
++destlibdir=\${1}
++destbindir=\${2}
++origlibdir=\${4}
++libnames=\$(cd \${destlibdir} ; ls -1 libwx*${WX_RELEASE}.dylib)
  changes=''
- for dep in \${libnames} ; do
-     target=\$(readlink \${4}/\${dep})
+-for dep in \${libnames} ; do
+-    target=\$(readlink \${4}/\${dep})
 -    changes="\${changes} -change \${libdir}\${target} \${3}/\${dep}"
-+    changes="\${changes} -change \${libdir}/\${target} \${3}/\${dep}"
++for lib in \${libnames} ; do
++    oldpath=\$(realpath \${origlibdir}/\${lib})
++    newpath=\${destlibdir}/\${lib}
++    changes="\${changes} -change \${oldpath} \${newpath}"
  done
- for i in \${libnames} ; do
-     lib=\$(readlink \${1}/\${i})
+-for i in \${libnames} ; do
+-    lib=\$(readlink \${1}/\${i})
+-    ${HOST_PREFIX}install_name_tool \${changes} -id \${3}/\${i} \${libdir}/\${lib}
++for lib in \${libnames} ; do
++    target=\${destlibdir}/\${lib}
++    ${HOST_PREFIX}install_name_tool \${changes} -id \${target} \${target}
  done
-
- if test -f "\${2}/wxrc-${WX_RELEASE}" ; then
+ 
+-if test -f "\${2}/wxrc-${WX_RELEASE}" ; then
+-    ${HOST_PREFIX}install_name_tool \${changes} \${2}/wxrc-${WX_RELEASE}
++if test -f "\${destbindir}/wxrc-${WX_RELEASE}" ; then
++    ${HOST_PREFIX}install_name_tool \${changes} \${destbindir}/wxrc-${WX_RELEASE}
+ fi
+ EOF
+             chmod +x change-install-names
