@@ -1,5 +1,6 @@
 {% set version = "3.3.2" %}
 {% set major_minor_version = '.'.join(version.split('.')[:2]) %}
+{% set version_nodots = ''.join(version.split('.')) %}
 
 package:
   name: wxwidgets
@@ -78,17 +79,14 @@ requirements:
 
 test:
   commands:
-    - test -f ${PREFIX}/lib/libwx_baseu-{{ major_minor_version }}${SHLIB_EXT}  # [linux]
-    # Not sure why OSX is adding these extra modifiers to SHLIB
-    # This is the reason why we aren't including the OSX package in conda-forge just yet.
-    # - test -f ${PREFIX}/lib/libwx_baseu-{{ version }}.0.0${SHLIB_EXT}          # [osx]
-    - test -f ${PREFIX}/include/wx-{{ major_minor_version }}/wx/wx.h           # [unix]
-    - wx-config --prefix  # [unix]
-    - wxrc --help  # [unix]
-    - where wxrc   # [win]
-    - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1  # [win]
-    # They keep changing the name of the dll, but I guess that is ok...
-    - if not exist %LIBRARY_BIN%\\wxmsw331u_core_vc_x64.dll exit 1  # [win]
+    - test -f ${PREFIX}/lib/libwx_baseu-{{ version }}.0.0${SHLIB_EXT}                # [osx]
+    - test -f ${PREFIX}/lib/libwx_baseu-{{ major_minor_version }}${SHLIB_EXT}        # [linux]
+    - test -f ${PREFIX}/include/wx-{{ major_minor_version }}/wx/wx.h                 # [unix]
+    - wx-config --prefix                                                             # [unix]
+    - wxrc --help                                                                    # [unix]
+    - where wxrc                                                                     # [win]
+    - if not exist %LIBRARY_BIN%\\wxrc.exe exit 1                                    # [win]
+    - if not exist %LIBRARY_BIN%\\wxmsw{{ version_nodots }}u_core_vc_x64.dll exit 1  # [win]
 
 about:
   home: https://www.wxwidgets.org/
