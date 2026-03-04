@@ -52,6 +52,7 @@ requirements:
     - glib                              # [linux]
     - pango                             # [linux]
     - cairo                             # [linux]
+    - freetype                          # [linux]
     - fontconfig                        # [linux]
     - gdk-pixbuf                        # [linux]
     - gtk3                              # [linux]
